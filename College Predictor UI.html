@@ -1,0 +1,142 @@
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+		<script src="https://unpkg.com/unlazy@0.11.3/dist/unlazy.with-hashing.iife.js" defer init></script>
+		<script type="text/javascript">
+			window.tailwind.config = {
+				darkMode: ['class'],
+				theme: {
+					extend: {
+						colors: {
+							border: 'hsl(var(--border))',
+							input: 'hsl(var(--input))',
+							ring: 'hsl(var(--ring))',
+							background: 'hsl(var(--background))',
+							foreground: 'hsl(var(--foreground))',
+							primary: {
+								DEFAULT: 'hsl(var(--primary))',
+								foreground: 'hsl(var(--primary-foreground))'
+							},
+							secondary: {
+								DEFAULT: 'hsl(var(--secondary))',
+								foreground: 'hsl(var(--secondary-foreground))'
+							},
+							destructive: {
+								DEFAULT: 'hsl(var(--destructive))',
+								foreground: 'hsl(var(--destructive-foreground))'
+							},
+							muted: {
+								DEFAULT: 'hsl(var(--muted))',
+								foreground: 'hsl(var(--muted-foreground))'
+							},
+							accent: {
+								DEFAULT: 'hsl(var(--accent))',
+								foreground: 'hsl(var(--accent-foreground))'
+							},
+							popover: {
+								DEFAULT: 'hsl(var(--popover))',
+								foreground: 'hsl(var(--popover-foreground))'
+							},
+							card: {
+								DEFAULT: 'hsl(var(--card))',
+								foreground: 'hsl(var(--card-foreground))'
+							},
+						},
+					}
+				}
+			}
+		</script>
+		<style type="text/tailwindcss">
+			@layer base {
+				/* :root {
+					--background: 0 0% 100%;
+--foreground: 224 71.4% 4.1%;
+--card: 0 0% 100%;
+--card-foreground: 224 71.4% 4.1%;
+--popover: 0 0% 100%;
+--popover-foreground: 224 71.4% 4.1%;
+--primary: 262.1 83.3% 57.8%;
+--primary-foreground: 210 20% 98%;
+--secondary: 220 14.3% 95.9%;
+--secondary-foreground: 220.9 39.3% 11%;
+--muted: 220 14.3% 95.9%;
+--muted-foreground: 220 8.9% 46.1%;
+--accent: 220 14.3% 95.9%;
+--accent-foreground: 220.9 39.3% 11%;
+--destructive: 0 84.2% 60.2%;
+--destructive-foreground: 210 20% 98%;
+--border: 220 13% 91%;
+--input: 220 13% 91%;
+--ring: 262.1 83.3% 57.8%;
+				} */
+				.dark {
+					--background: 224 71.4% 4.1%;
+--foreground: 210 20% 98%;
+--card: 224 71.4% 4.1%;
+--card-foreground: 210 20% 98%;
+--popover: 224 71.4% 4.1%;
+--popover-foreground: 210 20% 98%;
+--primary: 263.4 70% 50.4%;
+--primary-foreground: 210 20% 98%;
+--secondary: 215 27.9% 16.9%;
+--secondary-foreground: 210 20% 98%;
+--muted: 215 27.9% 16.9%;
+--muted-foreground: 217.9 10.6% 64.9%;
+--accent: 215 27.9% 16.9%;
+--accent-foreground: 210 20% 98%;
+--destructive: 0 62.8% 30.6%;
+--destructive-foreground: 210 20% 98%;
+--border: 215 27.9% 16.9%;
+--input: 215 27.9% 16.9%;
+--ring: 263.4 70% 50.4%;
+				}
+			}
+		</style>
+  </head>
+  <body>
+    <div class="bg-background text-primary-foreground min-h-screen flex flex-col items-center justify-center p-4">
+    <h1 class="text-5xl font-bold mb-8 text-gradient">College Predictor</h1>
+    <div class="bg-card w-full max-w-md p-8 rounded-lg shadow-lg transition-transform transform hover:scale-105">
+        <h2 class="text-3xl font-semibold mb-6 text-accent">Predict Colleges</h2>
+        
+        <div class="flex flex-col mb-4">
+            <label for="rank" class="mb-1 text-muted">Enter Rank:</label>
+            <input type="number" id="rank" class="px-4 py-2 rounded-lg border border-input focus:outline-none focus:ring focus:ring-ring transition duration-200 hover:border-accent" placeholder="Enter your rank">
+        </div>
+        
+        <div class="flex flex-col mb-4">
+            <label for="percentile" class="mb-1 text-muted">Enter Percentile:</label>
+            <input type="number" id="percentile" class="px-4 py-2 rounded-lg border border-input focus:outline-none focus:ring focus:ring-ring transition duration-200 hover:border-accent" placeholder="Enter your percentile">
+        </div>
+        
+        <div class="flex flex-col mb-4">
+            <label for="exam-type" class="mb-1 text-muted">Select Exam Type:</label>
+            <select id="exam-type" class="px-4 py-2 rounded-lg border border-input focus:outline-none focus:ring focus:ring-ring transition duration-200 hover:border-accent">
+                <option value="JE">Joint Entrance Exam (JEE)</option>
+                <option value="CET">Maharashtra State Common Entrance Test (MHT-CET)</option>
+            </select>
+        </div>
+        
+        <button class="bg-accent text-accent-foreground px-6 py-2 rounded-lg hover:bg-accent/80 transition-colors duration-200 shadow-md">Predict</button>
+    </div>
+</div>
+
+<style>
+    .text-gradient {
+        background: linear-gradient(90deg, #3B82F6, #6EE7B7);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+    .bg-card {
+        background-color: rgba(255, 255, 255, 0.9);
+        backdrop-filter: blur(10px);
+    }
+    .text-muted {
+        color: rgba(0, 0, 0, 0.6);
+    }
+</style>
+
+  </body>
+</html>
